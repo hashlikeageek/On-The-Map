@@ -11,16 +11,10 @@ import UIKit
 
 class udacityClient : UIViewController {
 
-    
-    func handleError(_ title: String, message: String, dismiss: String)
-    {
-        let alert = UIAlertController(title: "\(title)", message: "\(message)", preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "\(dismiss)", style: UIAlertActionStyle.default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
-        
-    }
+     var userKey: String? = nil
+
     //this function will get the session Key and make sure we log in after logging in we will get the account key so that we can get First and last name 
-    func login (_ username : String, password: String, completionHandler: @escaping (_ success: Bool, _ errorString: String?) -> Void)
+    func login (_ username : String, password: String, completionHandler: @escaping (_ success: Bool, _ _title: String,_ _message: String,_ dismiss: String) -> Void)
     {
         let request = NSMutableURLRequest(url: URL(string: "https://www.udacity.com/api/session")!)
         request.httpMethod = "POST"
@@ -31,14 +25,39 @@ class udacityClient : UIViewController {
         
         let task = session.dataTask(with: request as URLRequest) { data, response, error in
             if error != nil {
-                self.handleError("Error",message: "An error occured Please try again",dismiss: "Retry")
-                return
+                
+                DispatchQueue.main.async()
+                {
+                    completionHandler(false,"Error","An error occured Please try again","Retry")
+                    return
+                }
+               
             }
             
-            let range = Range(uncheckedBounds: (5, data!.count - 5))
+            let newData = data!.subdata(in: 5..<(data!.count))
+            print(newData)
             
-            let newData = data?.subdata(in: range) /* subset response data! */
-            print(NSString(data: newData!, encoding: String.Encoding.utf8.rawValue)!)
+            let parsedData = (try! JSONSerialization.jsonObject(with: newData, options: JSONSerialization.ReadingOptions.allowFragments)) as! NSDictionary
+                
+                print(parsedData)
+            
+            if let accountData = parsedData["account"] as? [String: AnyObject]
+            {
+             if let keyData = accountData["key"] as? String
+            {
+                self.userKey = keyData
+                 print(keyData)
+            }
+            }
+                
+            else
+            {
+                DispatchQueue.main.async(){
+               completionHandler(false,"Invalid Credential","Username or Password is invalid. Please Try Again","Try Again")
+            }
+            }
+           
+            
         }
         task.resume()
     }
@@ -49,6 +68,9 @@ class udacityClient : UIViewController {
         }
         return Singleton.sharedInstance
     }
+    
+  
+
 
     
 }

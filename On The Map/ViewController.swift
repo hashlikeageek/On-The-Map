@@ -18,11 +18,16 @@ class ViewController: UIViewController,UITextFieldDelegate {
     
     @IBOutlet weak var login: UIButton!
     
-    func iAmGoingToHandleErrors (_ errorString : String)
+    func handleError(_ title: String, message: String, dismiss: String)
     {
-        errorHandler.text = errorString
+        let alert = UIAlertController(title: "\(title)", message: "\(message)", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "\(dismiss)", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
         login.isEnabled = true
+        errorHandler.text = "Enter Valid Data"
+        
     }
+
     
     @IBAction func signUpAction(_ sender: Any) {
         if let signupURL = URL(string: "https://auth.udacity.com/sign-up?next=https://in.udacity.com/")
@@ -37,12 +42,22 @@ class ViewController: UIViewController,UITextFieldDelegate {
         
         if userName.text == "" ,passWord.text == ""
         {
-         iAmGoingToHandleErrors("Username & Password  can not be empty")
+        handleError("Error", message: "You can not leave password or username empty", dismiss: "Retry")
         }
         
-        udacityClient.sharedInstance().login(userName.text!,password: passWord.text!){ (success, errorString)
+        udacityClient.sharedInstance().login(userName.text!,password: passWord.text!){ (success,title,message , dismiss )
             in
+            
             print("i am in loginaction")
+            
+            if success
+            {
+                print("Nailed It")
+            }
+            else
+            {
+                self.handleError(title, message: "\(message)", dismiss: "\(dismiss)")
+            }
         }
         
         
