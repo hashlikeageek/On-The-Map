@@ -52,7 +52,27 @@ class ViewController: UIViewController,UITextFieldDelegate {
             
             if success
             {
-                print("Nailed It")
+                udacityClient.sharedInstance().publicData({ (success, title, message, dismiss) in
+                    
+                    if success
+                        
+                    {
+                        parseClient.sharedInstance().getData({ (sucess,title, message, dismiss ) in
+                            if success
+                            {
+                                self.completeLogin()
+                            }
+                            else
+                            {
+                                self.handleError("Error", message: "Could Not Complete Login", dismiss: "Retry")
+                            }
+                        })
+                    }
+                    else
+                    {
+                     self.handleError("Error", message: "Could Not get data from Udatcity", dismiss: "Retry")
+                    }
+                })
             }
             else
             {
@@ -61,8 +81,8 @@ class ViewController: UIViewController,UITextFieldDelegate {
         }
         
         
-    //step 1 - fetch UserKey from Udacity 
-        //if it goes through  than fetch student data 
+    //step 1 - fetch UserKey from Udacity - done
+        //if it goes through  than fetch student data
             // call complete login method
         //otherwise return error
         
@@ -71,9 +91,11 @@ class ViewController: UIViewController,UITextFieldDelegate {
     
     func completeLogin()
     {
-        let controller = self.storyboard?.instantiateViewController(withIdentifier: "tempScreen")
+        let controller = self.storyboard?.instantiateViewController(withIdentifier: "tabNav")
         
         present(controller!, animated: true, completion: nil)
+        
+       
     }
     
     
