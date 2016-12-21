@@ -94,21 +94,19 @@ class addNew : UIViewController, MKMapViewDelegate,UITextFieldDelegate
         submit.isHidden = true
         status.isHidden = false
         findlocButton.isHidden = true
+        
+        if(!link.text!.hasPrefix("http://")){
+            link.text =  "http://" + link.text!
+        }
+
+        
         parseClient.sharedInstance().submitData(submitThisCord.latitude.description, longitude: submitThisCord.longitude.description, addressField: location.text!, link: link.text!){
             (sucess, error)
             in
             if sucess {
-                parseClient.sharedInstance().getData({ (sucess,title, message, dismiss ) in
-                    if sucess
-                    {
-                        let controller = self.storyboard?.instantiateViewController(withIdentifier: "tabNav")
-                        self.present(controller!, animated: true, completion: nil)
-                    }
-                    else
-                    {
-                        self.errorHandler("Couldn't update View")
-                    }
-                })
+                    let controller = self.storyboard?.instantiateViewController(withIdentifier: "tabNav")
+                    self.present(controller!, animated: true, completion: nil)
+                
             }
             else
             {

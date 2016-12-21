@@ -105,6 +105,37 @@ class udacityClient : NSObject {
         task.resume()
     }
     
+//we will use this client for logging out of the application 
+        func logOut(_ completionHandler: @escaping (_ success: Bool, _ _title: String,_ _message: String,_ dismiss: String) -> Void)
+        {
+            print("In log out")
+           
+            let request = NSMutableURLRequest(url: URL(string: "https://www.udacity.com/api/session")!)
+            request.httpMethod = "DELETE"
+            var xsrfCookie: HTTPCookie? = nil
+            let sharedCookieStorage = HTTPCookieStorage.shared
+            for cookie in sharedCookieStorage.cookies! {
+                if cookie.name == "XSRF-TOKEN" { xsrfCookie = cookie }
+            }
+            if let xsrfCookie = xsrfCookie {
+                request.setValue(xsrfCookie.value, forHTTPHeaderField: "X-XSRF-TOKEN")
+            }
+            let session = URLSession.shared
+            let task = session.dataTask(with: request as URLRequest) { data, response, error in
+                if error != nil {
+                    DispatchQueue.main.async(){
+                        completionHandler(false,"Invalid Credential","Could Not Log Out Try Again","Try Again")}
+                }
+                let range = Range(uncheckedBounds: (5, data!.count - 5))
+                let newData = data?.subdata(in: range) /* subset response data! */
+                print(NSString(data: newData!, encoding: String.Encoding.utf8.rawValue)!)
+                completionHandler(true, "success", "", "")
+            }
+            task.resume()
+            
+    }
+    
+    
     class func sharedInstance() -> udacityClient {
         struct Singleton {
             static var sharedInstance = udacityClient()
