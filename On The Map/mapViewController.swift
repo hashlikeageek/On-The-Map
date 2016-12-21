@@ -46,6 +46,7 @@ class mapViewController: UIViewController, MKMapViewDelegate {
         UIApplication.shared.openURL(URL(string: view.annotation!.subtitle!!)!)
             }
 
+    
     func loadData()
     {
         for data in parseClient.sharedInstance().point {

@@ -31,4 +31,5 @@ class tableViewController : UITableViewController
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         UIApplication.shared.openURL(URL(string: parseClient.sharedInstance().point[(indexPath as NSIndexPath).row].mediaURL)!)
     }
-}
+  
+    }

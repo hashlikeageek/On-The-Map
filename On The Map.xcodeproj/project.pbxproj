@@ -19,6 +19,8 @@
 		C5542ED61E0A7954002C6953 /* StudentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5542ED51E0A7954002C6953 /* StudentData.swift */; };
 		C5542ED81E0ADB87002C6953 /* mapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5542ED71E0ADB87002C6953 /* mapViewController.swift */; };
 		C5542EDA1E0ADB9D002C6953 /* tableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5542ED91E0ADB9D002C6953 /* tableViewController.swift */; };
+		C5542EDC1E0AEB76002C6953 /* addNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5542EDB1E0AEB76002C6953 /* addNew.swift */; };
+		C5542EE01E0B07AC002C6953 /* tabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5542EDF1E0B07AC002C6953 /* tabViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +59,8 @@
 		C5542ED51E0A7954002C6953 /* StudentData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentData.swift; sourceTree = "<group>"; };
 		C5542ED71E0ADB87002C6953 /* mapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = mapViewController.swift; sourceTree = "<group>"; };
 		C5542ED91E0ADB9D002C6953 /* tableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tableViewController.swift; sourceTree = "<group>"; };
+		C5542EDB1E0AEB76002C6953 /* addNew.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = addNew.swift; sourceTree = "<group>"; };
+		C5542EDF1E0B07AC002C6953 /* tabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tabViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +164,8 @@
 				C5542EA01E08D4BB002C6953 /* ViewController.swift */,
 				C5542ED71E0ADB87002C6953 /* mapViewController.swift */,
 				C5542ED91E0ADB9D002C6953 /* tableViewController.swift */,
+				C5542EDB1E0AEB76002C6953 /* addNew.swift */,
+				C5542EDF1E0B07AC002C6953 /* tabViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -301,8 +307,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5542EE01E0B07AC002C6953 /* tabViewController.swift in Sources */,
 				C5542ED21E0A50B9002C6953 /* udacityClient.swift in Sources */,
 				C5542EDA1E0ADB9D002C6953 /* tableViewController.swift in Sources */,
+				C5542EDC1E0AEB76002C6953 /* addNew.swift in Sources */,
 				C5542EA11E08D4BB002C6953 /* ViewController.swift in Sources */,
 				C5542ED41E0A7894002C6953 /* parseClient.swift in Sources */,
 				C5542ED81E0ADB87002C6953 /* mapViewController.swift in Sources */,
