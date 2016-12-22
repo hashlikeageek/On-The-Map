@@ -33,6 +33,14 @@ class addNew : UIViewController, MKMapViewDelegate,UITextFieldDelegate
         self.location.delegate = self
     }
     
+    func handleError(_ title: String, message: String, dismiss: String)
+    {
+        let alert = UIAlertController(title: "\(title)", message: "\(message)", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "\(dismiss)", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+
+    
     func errorHandler(_ errorMessage: String)
     {
         status.text = errorMessage
@@ -91,27 +99,31 @@ class addNew : UIViewController, MKMapViewDelegate,UITextFieldDelegate
     
     @IBAction func submitAction(_ sender: Any) {
         location.isHidden = true
-        submit.isHidden = true
+        submit.isEnabled = false
         status.isHidden = false
         findlocButton.isHidden = true
         
         if(!link.text!.hasPrefix("http://")){
             link.text =  "http://" + link.text!
         }
+        
+        print("Submit function recalled")
 
         
         parseClient.sharedInstance().submitData(submitThisCord.latitude.description, longitude: submitThisCord.longitude.description, addressField: location.text!, link: link.text!){
-            (sucess, error)
+            (success, error)
             in
-            if sucess {
+            if success {
                     let controller = self.storyboard?.instantiateViewController(withIdentifier: "tabNav")
                     self.present(controller!, animated: true, completion: nil)
                 
             }
+                
             else
+           
             {
-                self.errorHandler("Could Not post data , try again")
-                self.submit.isHidden = false
+                self.handleError("Error", message: "Network Failed", dismiss: "Try again")
+                self.submit.isEnabled = true
             }
         
         }

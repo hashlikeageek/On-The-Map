@@ -14,10 +14,11 @@ class parseClient : NSObject
     var point = [StudentData]()
     
     // we use this method to repopulate the student data
-    func  getData(_ completionHandler: @escaping (_ success: Bool, _ _title: String,_ _message: String,_ dismiss: String) -> Void)
+    func  getData(_ completionHandler: @escaping (_ success: Bool, _ title: String,_ message: String,_ dismiss: String) -> Void)
     {
+        
         print("I am in getData parse")
-        let request = NSMutableURLRequest(url: URL(string: "https://parse.udacity.com/parse/classes/StudentLocation")!)
+        let request = NSMutableURLRequest(url: URL(string: "https://parse.udacity.com/parse/classes/StudentLocation?limit=100&order=-updatedAt")!)
         print("Got past request thing")
         request.addValue("QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr", forHTTPHeaderField: "X-Parse-Application-Id")
         request.addValue("QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY", forHTTPHeaderField: "X-Parse-REST-API-Key")
@@ -32,8 +33,16 @@ class parseClient : NSObject
             else
             {
                 print("Got in else of getdata")
+                let parsingError: NSError? = nil
                 let parsedData = try? JSONSerialization.jsonObject(with: data! , options: .allowFragments) as! [String: AnyObject]
                 print("did get parsed data")
+                
+                if let error = parsingError {
+                    completionHandler(false, error.description,"","")
+                }
+                else {
+                
+                
                 if let results = parsedData?["results"] as? [[String : AnyObject]] {
                     
                     print("in results thing")
@@ -51,7 +60,7 @@ class parseClient : NSObject
                 {
                     completionHandler(false,"Error","Something went wrong with Parse", "Try Again")
                 }
-                
+                }
             }
             completionHandler(true, "success", "", "")
 
@@ -62,7 +71,7 @@ class parseClient : NSObject
     
     
     // this method is used in order to submit new data to parse
-    func submitData(_ latitude: String, longitude: String, addressField: String, link: String, completionHandler: @escaping (_ success: Bool, _ errorString: String?) -> Void)
+    func submitData(_ latitude: String, longitude: String, addressField: String, link: String, completionHandler: @escaping (_ success: Bool, _ error: String) -> Void)
     {
         let request = NSMutableURLRequest(url: URL(string: "https://parse.udacity.com/parse/classes/StudentLocation")!)
         request.httpMethod = "POST"
@@ -72,16 +81,15 @@ class parseClient : NSObject
         request.httpBody = "{\"uniqueKey\": \"\(udacityClient.sharedInstance().userKey)\", \"firstName\": \"\(udacityClient.sharedInstance().firstName)\", \"lastName\": \"\(udacityClient.sharedInstance().lastName)\",\"mapString\": \"\(addressField)\", \"mediaURL\": \"\(link)\",\"latitude\": \(latitude), \"longitude\": \(longitude)}".data(using: String.Encoding.utf8)
         let session = URLSession.shared
         
-        let task = session.dataTask(with: request as URLRequest) { data, response, error in
+        let task = session.dataTask(with: request as URLRequest, completionHandler: { data, response, error in
+            
             if error != nil {
-                completionHandler(false, "Could not submit data")
+                completionHandler(false, "Failed to submit data.")
+            } else {
+                completionHandler(true, "nil")
             }
-            else
-            {
-                completionHandler(true,nil)
-            }
-            print(NSString(data: data!, encoding: String.Encoding.utf8.rawValue)!)
-        }
+            
+        }) 
         task.resume()
     }
     

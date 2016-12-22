@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "On The Map/ViewController.swift"
-            timestampString = "504013333.390753"
+            timestampString = "504069996.014748"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "117"
-            endingLineNumber = "117">
+            startingLineNumber = "120"
+            endingLineNumber = "120">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -40,11 +40,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "On The Map/udacityClient.swift"
-            timestampString = "504042450.874711"
+            timestampString = "504071913.669305"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "141"
-            endingLineNumber = "141"
+            startingLineNumber = "146"
+            endingLineNumber = "146"
             landmarkName = "Singleton"
             landmarkType = "14">
          </BreakpointContent>
@@ -72,7 +72,7 @@
                   moduleName = "On The Map"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/ashutosh/Desktop/NanoDegree/5.iOS%20Networking/Applications/On%20The%20Map/On%20The%20Map/udacityClient.swift"
-                  timestampString = "504038598.627551"
+                  timestampString = "504073470.906466"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
@@ -87,7 +87,7 @@
                   moduleName = "On The Map"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/ashutosh/Desktop/NanoDegree/5.iOS%20Networking/Applications/On%20The%20Map/On%20The%20Map/udacityClient.swift"
-                  timestampString = "504038598.629936"
+                  timestampString = "504073470.909564"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
@@ -102,7 +102,7 @@
                   moduleName = "On The Map"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/ashutosh/Desktop/NanoDegree/5.iOS%20Networking/Applications/On%20The%20Map/On%20The%20Map/udacityClient.swift"
-                  timestampString = "504038598.632822"
+                  timestampString = "504073470.912599"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "13"
@@ -135,11 +135,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "On The Map/udacityClient.swift"
-            timestampString = "504013434.353356"
+            timestampString = "504071556.915509"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
             landmarkName = "login(_:password:completionHandler:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -183,11 +183,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "On The Map/addNew.swift"
-            timestampString = "504036065.394913"
+            timestampString = "504073469.676726"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
             landmarkName = "determineLocation()"
             landmarkType = "7">
          </BreakpointContent>
@@ -199,11 +199,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "On The Map/addNew.swift"
-            timestampString = "504040906.43729"
+            timestampString = "504075376.255529"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
             landmarkName = "submitAction(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -215,11 +215,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "On The Map/addNew.swift"
-            timestampString = "504040906.43729"
+            timestampString = "504077178.055819"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "107"
-            endingLineNumber = "107"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
             landmarkName = "submitAction(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -231,11 +231,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "On The Map/addNew.swift"
-            timestampString = "504042287.558039"
+            timestampString = "504075376.255529"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "110"
-            endingLineNumber = "110"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
             landmarkName = "submitAction(_:)"
             landmarkType = "7">
          </BreakpointContent>

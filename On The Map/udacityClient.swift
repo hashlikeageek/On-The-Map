@@ -17,6 +17,8 @@ class udacityClient : NSObject {
     //this function will get the session Key and make sure we log in after logging in we will get the account key so that we can get First and last name 
     func login (_ username : String, password: String, completionHandler: @escaping (_ success: Bool, _ _title: String,_ _message: String,_ dismiss: String) -> Void)
     {
+      
+
         let request = NSMutableURLRequest(url: URL(string: "https://www.udacity.com/api/session")!)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Accept")
@@ -29,12 +31,15 @@ class udacityClient : NSObject {
                 
                 DispatchQueue.main.async()
                 {
-                    completionHandler(false,"Error","An error occured Please try again","Retry")
-                    return
+                    print("loginWithInput - \(error!.localizedDescription)")
+                    
+                    completionHandler(false,"Connection Error","Could not connect to internet. Please Try Again","Try Again")
+                    
                 }
                
             }
-            
+            else
+            {
             let newData = data!.subdata(in: 5..<(data!.count))
             print(newData)
             
@@ -57,7 +62,7 @@ class udacityClient : NSObject {
                completionHandler(false,"Invalid Credential","Username or Password is invalid. Please Try Again","Try Again")}
             }
            completionHandler(true, "success", "", "")
-            
+            }
         }
         print("At the end of login")
         task.resume()
