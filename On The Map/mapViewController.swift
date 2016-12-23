@@ -49,7 +49,7 @@ class mapViewController: UIViewController, MKMapViewDelegate {
     
     func loadData()
     {
-        for data in parseClient.sharedInstance().point {
+        for data in StudentDataModel.point {
             
             let annotation = MKPointAnnotation()
             let location = CLLocationCoordinate2D(latitude: data.latitude, longitude: data.longitude)

@@ -113,6 +113,7 @@ class addNew : UIViewController, MKMapViewDelegate,UITextFieldDelegate
         parseClient.sharedInstance().submitData(submitThisCord.latitude.description, longitude: submitThisCord.longitude.description, addressField: location.text!, link: link.text!){
             (success, error)
             in
+
             if success {
                     let controller = self.storyboard?.instantiateViewController(withIdentifier: "tabNav")
                     self.present(controller!, animated: true, completion: nil)

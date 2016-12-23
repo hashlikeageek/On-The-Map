@@ -21,6 +21,7 @@
 		C5542EDA1E0ADB9D002C6953 /* tableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5542ED91E0ADB9D002C6953 /* tableViewController.swift */; };
 		C5542EDC1E0AEB76002C6953 /* addNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5542EDB1E0AEB76002C6953 /* addNew.swift */; };
 		C5542EE01E0B07AC002C6953 /* tabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5542EDF1E0B07AC002C6953 /* tabViewController.swift */; };
+		C5542EE61E0CC26B002C6953 /* StudentDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5542EE51E0CC26B002C6953 /* StudentDataModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		C5542ED91E0ADB9D002C6953 /* tableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tableViewController.swift; sourceTree = "<group>"; };
 		C5542EDB1E0AEB76002C6953 /* addNew.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = addNew.swift; sourceTree = "<group>"; };
 		C5542EDF1E0B07AC002C6953 /* tabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tabViewController.swift; sourceTree = "<group>"; };
+		C5542EE51E0CC26B002C6953 /* StudentDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentDataModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +149,7 @@
 				C5542ED11E0A50B9002C6953 /* udacityClient.swift */,
 				C5542ED31E0A7894002C6953 /* parseClient.swift */,
 				C5542ED51E0A7954002C6953 /* StudentData.swift */,
+				C5542EE51E0CC26B002C6953 /* StudentDataModel.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -310,6 +313,7 @@
 				C5542EE01E0B07AC002C6953 /* tabViewController.swift in Sources */,
 				C5542ED21E0A50B9002C6953 /* udacityClient.swift in Sources */,
 				C5542EDA1E0ADB9D002C6953 /* tableViewController.swift in Sources */,
+				C5542EE61E0CC26B002C6953 /* StudentDataModel.swift in Sources */,
 				C5542EDC1E0AEB76002C6953 /* addNew.swift in Sources */,
 				C5542EA11E08D4BB002C6953 /* ViewController.swift in Sources */,
 				C5542ED41E0A7894002C6953 /* parseClient.swift in Sources */,
@@ -568,6 +572,7 @@
 				C5542EC51E08D4BC002C6953 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C5542EC61E08D4BC002C6953 /* Build configuration list for PBXNativeTarget "On The MapTests" */ = {
 			isa = XCConfigurationList;
@@ -576,6 +581,7 @@
 				C5542EC81E08D4BC002C6953 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C5542EC91E08D4BC002C6953 /* Build configuration list for PBXNativeTarget "On The MapUITests" */ = {
 			isa = XCConfigurationList;
@@ -584,6 +590,7 @@
 				C5542ECB1E08D4BC002C6953 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

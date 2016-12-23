@@ -11,7 +11,7 @@ import Foundation
 class parseClient : NSObject
 {
     // this contains all the data that we will need to display on the pin
-    var point = [StudentData]()
+   
     
     // we use this method to repopulate the student data
     func  getData(_ completionHandler: @escaping (_ success: Bool, _ title: String,_ message: String,_ dismiss: String) -> Void)
@@ -26,6 +26,15 @@ class parseClient : NSObject
         let session = URLSession.shared
         print("Created a session")
         let task = session.dataTask(with: request as URLRequest) { data, response, error in
+            
+            if let response = response as? HTTPURLResponse {
+                if response.statusCode < 200 || response.statusCode > 300 {
+                completionHandler(false, "Error","Something went wrong with Parse", "Try Again")
+                    return
+                }
+            }
+            
+            
             if error != nil {
                 completionHandler(false, "Error","Something went wrong with Parse", "Try Again")
                 return
@@ -46,12 +55,12 @@ class parseClient : NSObject
                 if let results = parsedData?["results"] as? [[String : AnyObject]] {
                     
                     print("in results thing")
-                    self.point.removeAll(keepingCapacity: true)
+                    StudentDataModel.point.removeAll(keepingCapacity: true)
                     print("removed")
                     
                     for result in results {
                         print("in loop damn you")
-                        self.point.append(StudentData(dictionary: result))
+                   StudentDataModel.point.append(StudentData(dictionary: result))
                         print("Appended somehow")
                     }
                     print("out of loop")
@@ -71,7 +80,7 @@ class parseClient : NSObject
     
     
     // this method is used in order to submit new data to parse
-    func submitData(_ latitude: String, longitude: String, addressField: String, link: String, completionHandler: @escaping (_ success: Bool, _ error: String) -> Void)
+    func submitData(_ latitude: String, longitude: String, addressField: String, link: String, completionHandler: @escaping (_ success: Bool,_ error: String) -> Void)
     {
         let request = NSMutableURLRequest(url: URL(string: "https://parse.udacity.com/parse/classes/StudentLocation")!)
         request.httpMethod = "POST"
@@ -83,10 +92,18 @@ class parseClient : NSObject
         
         let task = session.dataTask(with: request as URLRequest, completionHandler: { data, response, error in
             
+            if let response = response as? HTTPURLResponse {
+                if response.statusCode < 200 || response.statusCode > 300 {
+                    completionHandler(false, "Error")
+                    return
+                }
+            }
+
+            
             if error != nil {
-                completionHandler(false, "Failed to submit data.")
+                completionHandler(false,"Failed to submit data.")
             } else {
-                completionHandler(true, "nil")
+                completionHandler(true,"nil")
             }
             
         }) 
